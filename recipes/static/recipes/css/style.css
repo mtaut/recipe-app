@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Khula&family=Lato:wght@700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap");
+</style>)
+
+.josefin-sans-home_text_font {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  background-image: url(../images/recipes_home.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
+}
+
+.welcome-body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-container {
+  position: relative;
+  top: -80px; /* will adjust welcome text box y axis */
+  width: 100%;
+  max-width: 375px; /* will adjust welcome text box width */
+  text-align: center;
+  border: 2px solid black;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #7b8d6a; /* sage green box background */
+}
+
+.recipe-body {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 50vh;
+  background-color: #f8f8f8;
+  margin: 0;
+}
+
+.recipe-container {
+  text-align: center;
+  background: #7b8d6a;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh; /* will adjust height of recipe box, might make smaller in future... */
+  overflow-y: auto; /* this will allow for scrolling */
+  margin-top: 10px; /* adjust this as needed.... */
+  margin-bottom: auto;
+}
+
+.recipe-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.recipe-item:last-child {
+  border-bottom: none;
+}
+
+.recipe-item h2 {
+  margin-bottom: 10px;
+  margin-top: 5px; /* this centered the recipe-item in the container */
+  font-size: 1.5rem;
+}
+
+.recipe-item img {
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.recipe-img {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 10px;
+}

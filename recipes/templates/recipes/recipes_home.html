@@ -1,5 +1,7 @@
 {% load static %}
 
+<!-- ***** THIS IS THE INITIAL LANDING PAGE BEFORE LOGIN - NOT A PROTECTED VIEW - (127.0.0.1:8000) ***** -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,9 +15,9 @@
     <div class="welcome-container">
       <h2>Welcome to Recipes!</h2>
       <p>
-        With the Recipes! app you can create, save, edit, and delete your
-        favorite recipes.
+        With the Recipes! app you can create and modify your favorite recipes.
       </p>
+      <a href="{% url 'login' %}" class="button2">Login Here</a>
     </div>
   </body>
 </html>

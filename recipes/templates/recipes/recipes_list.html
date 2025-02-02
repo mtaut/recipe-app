@@ -1,6 +1,8 @@
 {% load static %}
 <!-- to load static files-images and CSS -->
 
+<!-- ***** THIS IS THE MAIN PAGE THAT USER ARRIVES TO AFTER LOGIN - IS A PROTECTED VIEW - (127.0.0.1:8000/list/) ***** -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,15 +12,25 @@
     <link rel="stylesheet" href="{% static 'recipes/css/style.css' %}" />
   </head>
 
-  <body class="recipe-body">
-    <div class="recipe-container">
-      <h1>Recipe List</h1>
-      {% for object in object_list %}
-      <div class="recipe-item">
-        <a href="{{object.get_absolute_url}}"> <h2>{{ object.name }}</h2></a>
-        <img src="{{object.pic.url}}" alt="{{ object.name }}" />
+  <body>
+    <div class="recipe-body">
+      <div class="logout-container">
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="button">Logout</button>
+        </form>
       </div>
-      {% endfor %}
+      <div class="recipe-container">
+        <h1 class="recipe-title">Recipe List</h1>
+        {% for object in object_list %}
+        <div class="recipe-item">
+          <a href="{{object.get_absolute_url}}">
+            <h2 class="button2">{{ object.name }}</h2></a
+          >
+          <img src="{{object.pic.url}}" alt="{{ object.name }}" />
+        </div>
+        {% endfor %}
+      </div>
     </div>
   </body>
 </html>

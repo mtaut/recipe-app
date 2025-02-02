@@ -1,5 +1,7 @@
 {% load static %}
 
+<!-- ***** THIS IS THE RECIPE DETAIL PAGE - IS A PROTECTED VIEW - (URL/list/<pk>) ***** -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,16 +12,30 @@
   </head>
 
   <body>
-    <div>
-      <h2>Recipe Details: {{object.name}}</h2>
-      <div>
-        <b>Name: </b> {{object.name}} <br />
-        <b>Ingredients: </b> {{object.ingredients}} <br />
-        <b>Cooking Time: </b> {{object.cooking_time}} <br />
-        <b>Difficulty: </b> {{object.calculate_difficulty}} <br />
-        <b>Description: </b> {{object.description}} <br />
+    <div class="recipe-body">
+      <div class="logout-container">
+        <form action="{% url 'logout' %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="button">Logout</button>
+        </form>
       </div>
-      <img src="{{object.pic.url}}" class="recipe-img" />
+      <div class="recipe-container">
+        <h2 class="recipe-title">Recipe Details: {{object.name}}</h2>
+
+        <div class="recipe-info">
+          <p><b>Name:</b> {{ object.name }}</p>
+          <p><b>Ingredients:</b> {{ object.ingredients }}</p>
+          <p><b>Cooking Time:</b> {{ object.cooking_time }}</p>
+          <p><b>Difficulty:</b> {{ object.calculate_difficulty }}</p>
+          <p><b>Description:</b> {{ object.description }}</p>
+        </div>
+
+        <img
+          src="{{object.pic.url}}"
+          class="recipe-img"
+          alt="{{ object.name }}"
+        />
+      </div>
     </div>
   </body>
 </html>

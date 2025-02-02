@@ -19,7 +19,8 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: black;
+  color: #000;
+  flex-direction: column;
 }
 
 .welcome-body {
@@ -33,11 +34,11 @@ body {
 
 .welcome-container {
   position: relative;
-  top: -80px; /* will adjust welcome text box y axis */
+  top: -50px; /* will adjust welcome text box y axis */
   width: 100%;
   max-width: 375px; /* will adjust welcome text box width */
   text-align: center;
-  border: 2px solid black;
+  border: 2px solid #000;
   padding: 20px;
   border-radius: 10px;
   background-color: #7b8d6a; /* sage green box background */
@@ -45,18 +46,22 @@ body {
 
 .recipe-body {
   display: flex;
+  text-align: center;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  width: 80%;
+  max-width: 900px;
   min-height: 50vh;
-  background-color: #f8f8f8;
-  margin: 0;
+  margin: auto;
+  padding: 20px;
 }
 
 .recipe-container {
-  text-align: center;
+  text-align: left;
   background: #7b8d6a;
   padding: 10px;
-  border: 2px solid black;
+  border: 2px solid #000;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   max-width: 500px;
@@ -88,14 +93,59 @@ body {
 
 .recipe-item img {
   width: 100%;
-  max-width: 250px;
+  max-width: 350px;
   height: auto;
   border-radius: 5px;
+  display: block;
+  margin: 20px auto;
 }
 
 .recipe-img {
+  display: block;
+  margin: 20px auto 0;
   width: 100%;
-  max-width: 350px;
+  max-width: 400px;
   height: auto;
   border-radius: 10px;
+}
+
+.logout-container {
+  align-self: flex-start;
+  position: absolute;
+  top: 30px;
+  left: 150px;
+  z-index: 10;
+}
+
+.button {
+  background-color: #7b8d6a;
+  color: #000;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.button2 {
+  background-color: #000;
+  color: #ddd;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: "Josefin Sans", sans-serif;
+  box-shadow: 0px 4px 6px rgba(0, 0.4, 0, 0.4);
+  text-decoration: none;
+}
+
+.recipe-title {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.recipe-info p {
+  margin: 10px 0;
+  font-size: 1rem;
+  line-height: 1.5;
 }

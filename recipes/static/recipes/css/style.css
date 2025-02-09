@@ -13,7 +13,7 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
   display: flex;
   justify-content: center;
@@ -48,32 +48,37 @@ body {
   display: flex;
   text-align: center;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  width: 80%;
-  max-width: 900px;
+  max-width: 700px; /* adjust as needed...*/
+  width: 90%;
   min-height: 50vh;
-  margin: auto;
+  margin: 10px 20px;
   padding: 20px;
+  overflow-y: auto; /* adjust if necessary... */
 }
 
 .recipe-container {
-  text-align: left;
+  align-items: center;
+  text-align: center;
   background: #7b8d6a;
-  padding: 10px;
+  padding: 20px;
   border: 2px solid #000;
   border-radius: 10px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  width: 100%;
-  max-height: 90vh; /* will adjust height of recipe box, might make smaller in future... */
+  max-width: 600px;
+  width: 90%;
+  height: auto; /* will adjust height of recipe box, might make smaller in future... */
+  min-height: 150px; /* may need to adjust this */
   overflow-y: auto; /* this will allow for scrolling */
-  margin-top: 10px; /* adjust this as needed.... */
-  margin-bottom: auto;
+  margin: 10px 20px;
 }
 
 .recipe-item {
-  margin-bottom: 10px;
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  margin: 10px 20px;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -148,4 +153,34 @@ body {
   margin: 10px 0;
   font-size: 1rem;
   line-height: 1.5;
+}
+
+.search-container {
+  text-align: center;
+  align-items: center;
+  background: #7b8d6a;
+  padding: 15px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  min-height: 150px;
+  margin-bottom: 20px;
+  margin-top: 20px; /* adjust this as needed.... */
+}
+
+.search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.header-title {
+  background: #7b8d6a;
+  border: 2px solid #000;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px 15px;
 }

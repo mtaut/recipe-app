@@ -13,6 +13,8 @@
   </head>
 
   <body>
+    <br />
+    <h1 class="header-title">Recipes!</h1>
     <div class="recipe-body">
       <div class="logout-container">
         <form action="{% url 'logout' %}" method="post">
@@ -20,6 +22,35 @@
           <button type="submit" class="button">Logout</button>
         </form>
       </div>
+
+      <div class="search-container">
+        <p>Search for an ingredient or display recipe data in a chart:</p>
+        <form action="{% url 'recipes:recipes_list' %}" method="GET">
+          {{ form }}
+          <br />
+          <button type="submit" class="button2">Search</button>
+        </form>
+        {% if search_results %}
+        <h3>Search Results:</h3>
+        <div class="search-results">
+          {% for recipe in search_results %}
+          <p>
+            <a href="{% url 'recipes:detail' recipe.id %}" class="button2"
+              >{{ recipe.name }}</a
+            >
+          </p>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+
+      {% if chart %}
+      <div>
+        <h2 class="header-title">Chart:</h2>
+        <img src="data:image/png;base64,{{ chart }}" />
+      </div>
+      {% endif %}
+
       <div class="recipe-container">
         <h1 class="recipe-title">Recipe List</h1>
         {% for object in object_list %}

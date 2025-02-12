@@ -9,15 +9,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recipes! Details</title>
     <link rel="stylesheet" href="{% static 'recipes/css/style.css' %}" />
+    <script src="{% static 'recipes/js/main.js' %}"></script>
   </head>
 
   <body>
     <div class="recipe-body">
       <div class="logout-container">
-        <form action="{% url 'logout' %}" method="post">
-          {% csrf_token %}
-          <button type="submit" class="button">Logout</button>
-        </form>
+        <button onclick="showMenu()" class="button">Menu</button>
+        <div id="nav" class="hide">
+          <ul>
+            <li>
+              <a href="{% url 'recipes:recipes_list' %}" class="button"
+                >Back to List</a
+              >
+            </li>
+            <br />
+            <li>
+              <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="button">Logout</button>
+              </form>
+            </li>
+            <br />
+            <li><a href="#" class="button">About Me</a></li>
+          </ul>
+        </div>
       </div>
       <div class="recipe-container">
         <h2 class="recipe-title">Recipe Details: {{object.name}}</h2>

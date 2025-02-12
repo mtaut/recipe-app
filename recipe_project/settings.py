@@ -122,6 +122,9 @@ LOGIN_REDIRECT_URL = '/recipes/list/'
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS=[
+    BASE_DIR / 'recipes' / 'static'
+]
 # parameters for media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'

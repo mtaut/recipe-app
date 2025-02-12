@@ -50,7 +50,7 @@ class RecipeListView(LoginRequiredMixin, ListView):
                 recipes = recipes.filter(Q(ingredients__icontains=ingredient))
 
             # convert QuerySet to pandas DataFrame
-            if recipes.exists():
+            if recipes.exists() and chart_type:
                 df = pd.DataFrame.from_records(
                     recipes.values('ingredients', 'cooking_time')
                 )

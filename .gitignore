@@ -7,7 +7,7 @@ __pycache__/
 *.pyc 
 
 # ignore environment variables file
-.env
+*.env
 
 # text backup files
 *.bak

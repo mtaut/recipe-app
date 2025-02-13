@@ -112,3 +112,40 @@ class RecipeSearchFormTest(TestCase):
         form_data = {'chart_type': '#1'}
         form = RecipeSearchForm(data=form_data)
         self.assertFalse(form.is_valid())
+
+    def test_chart_generation(self):
+        url = reverse('recipes:recipes_list')
+
+        form_data = {
+            'ingredient': 'chicken',
+            'chart_type': '#1',
+        }
+        response = self.client.get(url, form_data)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('chart', response.context)    
+
+class RecipeFormTest(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.user = User.objects.create_user(username='user4', password='password1123')
+        
+    def setUp(self):
+        self.client.login(username='user4', password='password1123')
+
+    def test_create_recipe(self):
+        url = reverse('recipes:create_recipe')
+
+        form_data = {
+            'name': 'Test Recipe3',
+            'ingredients': 'test ingredient, test ingredient8',
+            'cooking_time': 3,
+            'description': 'recipe for a test',
+            'pic': ''
+        }
+        response = self.client.post(url, form_data)
+
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(Recipe.objects.filter(name='Test Recipe3').exists())
+
+        

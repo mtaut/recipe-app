@@ -3,7 +3,7 @@ from django.views.generic import ListView, DetailView, CreateView           # to
 from django.urls import reverse_lazy
 from .models import Recipe                                       # to access Recipe model
 from django.contrib.auth.mixins import LoginRequiredMixin           # protecting views
-# from django.contrib.auth.decorators import login_required   ---------> shouldn't need this-using CBVs
+from django.contrib.auth.decorators import login_required
 from .forms import RecipeSearchForm, RecipeForm
 from .utils import get_chart
 import pandas as pd
@@ -11,7 +11,11 @@ from django.db.models import Q
 
 # Create your views here.
 def home(request):
-    return render(request, 'recipes/recipes_home.html')  
+    return render(request, 'recipes/recipes_home.html')
+
+@login_required
+def about_page(request):
+    return render(request, 'recipes/about.html')
 
 class RecipeListView(LoginRequiredMixin, ListView):
     model = Recipe

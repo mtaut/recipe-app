@@ -39,6 +39,15 @@
           </ul>
         </div>
       </div>
+      <!------- USER FEEDBACK MESSAGE FOR CREATING A RECIPE ------->
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <li class="message {{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
       <div class="search-container">
         <p>Search for an ingredient or display recipe data in a chart:</p>
         <form action="{% url 'recipes:recipes_list' %}" method="GET">

@@ -258,3 +258,15 @@ body {
 .credits-list li {
   margin-bottom: 3px;
 }
+
+.messages {
+  list-style: none;
+}
+
+.message.success {
+  color: aliceblue;
+}
+
+.message.error {
+  color: fuchsia;
+}

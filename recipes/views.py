@@ -1,27 +1,30 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView           # to display list and details of recipes
+from django.views.generic import ListView, DetailView, CreateView   # to display list and details of recipes
 from django.urls import reverse_lazy
 from django.contrib import messages
-from .models import Recipe                                       # to access Recipe model
-from django.contrib.auth.mixins import LoginRequiredMixin           # protecting views
-from django.contrib.auth.decorators import login_required
+from .models import Recipe                                          # to access Recipe model
+from django.contrib.auth.mixins import LoginRequiredMixin           # protecting views (CBV)
+from django.contrib.auth.decorators import login_required           # protecting views (FBV)
 from .forms import RecipeSearchForm, RecipeForm
 from .utils import get_chart
 import pandas as pd
 from django.db.models import Q
 
-# Create your views here.
+# home page view
 def home(request):
     return render(request, 'recipes/recipes_home.html')
 
+# about page view
 @login_required
 def about_page(request):
     return render(request, 'recipes/about.html')
 
+# recipe list view-displays all recipes, allows for searching, and chart
 class RecipeListView(LoginRequiredMixin, ListView):
     model = Recipe
     template_name = 'recipes/recipes_list.html'
 
+    # queryset to filter recipes based on search input
     def get_queryset(self):
         queryset = Recipe.objects.all()
         form = RecipeSearchForm(self.request.GET or None)
@@ -45,7 +48,7 @@ class RecipeListView(LoginRequiredMixin, ListView):
         chart = None
         search_results = None
 
-        # extract data as a QuerySet
+        # extract all recipes from database
         recipes = Recipe.objects.all()
 
         if form.is_valid():
@@ -71,16 +74,18 @@ class RecipeListView(LoginRequiredMixin, ListView):
         context['search_results'] = search_results
         return context
 
+# displays individual details of recipe
 class RecipeDetailView(LoginRequiredMixin, DetailView):
     model = Recipe
     template_name = 'recipes/recipes_detail.html'
 
+# allows logged-in users to create a recipe
 class CreateRecipeView(LoginRequiredMixin, CreateView):
     model = Recipe
     form_class = RecipeForm
     template_name = 'recipes/create_recipe.html'
     success_url = reverse_lazy('recipes:recipes_list')
-
+    
     def form_valid(self, form):
         form.instance.user = self.request.user
         response = super().form_valid(form)

@@ -1,6 +1,7 @@
 from django import forms
 from .models import Recipe
 
+# form for ingredient search and chart generation
 class RecipeSearchForm(forms.Form):
     ingredient = forms.CharField(max_length=120)    
     chart_type = forms.ChoiceField(
@@ -8,6 +9,7 @@ class RecipeSearchForm(forms.Form):
         required=False,        
     )
 
+# form for user to create recipe
 class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe

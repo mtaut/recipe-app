@@ -66,12 +66,14 @@ class RecipeViewTest(TestCase):
     def setUp(self):
         self.client.login(username='user2', password='word123')
 
+    # test list view of recipes
     def test_recipe_list_view(self):
         response = self.client.get(reverse('recipes:recipes_list'))
         
         self.assertContains(response, "Test Recipe2")
         self.assertTemplateUsed(response, 'recipes/recipes_list.html')
 
+    # test individual recipe details
     def test_recipe_detail_view(self):
         response = self.client.get(reverse('recipes:detail', args=[self.recipe.pk]))
         
@@ -92,6 +94,7 @@ class RecipeSearchFormTest(TestCase):
     def setUp(self):
         self.client.login(username='user3', password='password11')
 
+    # test ingredient search
     def test_search_ingredient(self):
         url = reverse('recipes:recipes_list')
         response = self.client.get(url, {'ingredient': 'test ingredient5'})
@@ -103,16 +106,19 @@ class RecipeSearchFormTest(TestCase):
         self.assertGreater(len(search_results), 0)
         self.assertIn(self.recipe, search_results)
 
+    # test chart with ingredient
     def test_valid_form(self):
         form_data = {'ingredient': 'tomato', 'chart_type': '#1'}
         form = RecipeSearchForm(data=form_data)
         self.assertTrue(form.is_valid())
 
+    # test chart without ingredient
     def test_invalid_form_without_ingredient(self):
         form_data = {'chart_type': '#1'}
         form = RecipeSearchForm(data=form_data)
         self.assertFalse(form.is_valid())
 
+    # test chart generation
     def test_chart_generation(self):
         url = reverse('recipes:recipes_list')
 
@@ -133,6 +139,7 @@ class RecipeFormTest(TestCase):
     def setUp(self):
         self.client.login(username='user4', password='password1123')
 
+    # test user-created recipe
     def test_create_recipe(self):
         url = reverse('recipes:create_recipe')
 

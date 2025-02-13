@@ -55,7 +55,7 @@ def get_chart(chart_type, data, **kwargs):
 
         # count occurances of each ingredient
         ingredient_counts = Counter(all_ingredients)
-        most_common = ingredient_counts.most_common(10) # top 10 ingredients
+        most_common = ingredient_counts.most_common(5) # top 5 ingredients
 
         if most_common:
             ingredients, counts = zip(*most_common)

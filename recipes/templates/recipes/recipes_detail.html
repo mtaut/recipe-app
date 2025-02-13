@@ -25,6 +25,12 @@
             </li>
             <br />
             <li>
+              <a href="{% url 'recipes:create_recipe' %}" class="button"
+                >Create a Recipe</a
+              >
+            </li>
+            <br />
+            <li>
               <form action="{% url 'logout' %}" method="post">
                 {% csrf_token %}
                 <button type="submit" class="button">Logout</button>

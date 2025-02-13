@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView           # to display list and details of recipes
+from django.views.generic import ListView, DetailView, CreateView           # to display list and details of recipes
+from django.urls import reverse_lazy
 from .models import Recipe                                       # to access Recipe model
 from django.contrib.auth.mixins import LoginRequiredMixin           # protecting views
-# from django.contrib.auth.decorators import login_required - shouldn't need this...
-from .forms import RecipeSearchForm
+# from django.contrib.auth.decorators import login_required   ---------> shouldn't need this-using CBVs
+from .forms import RecipeSearchForm, RecipeForm
 from .utils import get_chart
 import pandas as pd
 from django.db.models import Q
@@ -68,3 +69,13 @@ class RecipeListView(LoginRequiredMixin, ListView):
 class RecipeDetailView(LoginRequiredMixin, DetailView):
     model = Recipe
     template_name = 'recipes/recipes_detail.html'
+
+class CreateRecipeView(LoginRequiredMixin, CreateView):
+    model = Recipe
+    form_class = RecipeForm
+    template_name = 'recipes/create_recipe.html'
+    success_url = reverse_lazy('recipes:recipes_list')
+
+    def form_invalid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)

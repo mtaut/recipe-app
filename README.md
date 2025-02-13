@@ -38,23 +38,29 @@ This project is part of **CareerFoundry's Recipe App**, built using Django. It i
 
 1. **Clone the repository**
 
-````sh
+```sh
 git clone https://github.com/yourusername/recipe-app.git
-cd recipe-app```
+cd recipe-app
+```
 
 2. **Create and activate a virtual environment**
+
 ```sh
 python -m venv venv
 source venv/bin/activate
 # On Windows
-venv\Scripts\activate```
+venv\Scripts\activate
+```
 
 3. **Install Dependencies**
+
 ```sh
-pip install -r requirements.txt```
+pip install -r requirements.txt
+```
 
 4. **Apply migrations and run the server**
+
 ```sh
 python manage.py migrate
-python manage.py runserver```
-````
+python manage.py runserver
+```
